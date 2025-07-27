@@ -45,10 +45,9 @@ Modifiez les variables CSS dans `css/style.css` pour personnaliser les couleurs 
 
 ```css
 :root {
-    --primary-color: #2563eb;      /* Couleur principale */
-    --secondary-color: #1e40af;    /* Couleur secondaire */
-    --text-color: #1f2937;         /* Couleur du texte */
-    --bg-color: #ffffff;           /* Couleur de fond */
+    --wisteria: #cd9cec;
+    --indigo: #580092;
+    --liorice: #100311;
 }
 ```
 
