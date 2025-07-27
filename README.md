@@ -1,6 +1,6 @@
 # Mon Portfolio Personnel
 
-Un portfolio moderne et réactif inspiré du site d'Adrian Alvarez, construit avec HTML, CSS et JavaScript.
+Un portfolio moderne et réactif, construit avec HTML, CSS et JavaScript.
 
 ## Fonctionnalités
 
