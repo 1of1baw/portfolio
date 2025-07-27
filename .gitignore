@@ -1,0 +1,27 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dossiers de dépendances
+node_modules/
+
+# Fichiers d'environnement
+.env
+.env.local
+
+# Dossiers de build
+dist/
+build/
+
+# Fichiers de logs
+*.log
+npm-debug.log*
+
+# Dossiers d'IDE
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
