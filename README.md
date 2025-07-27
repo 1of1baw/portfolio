@@ -62,8 +62,4 @@ Modifiez les variables CSS dans `css/style.css` pour personnaliser les couleurs 
 - HTML5
 - CSS3 (Flexbox, Grid, Variables CSS)
 - JavaScript Vanilla
-- Font Awesome pour les icônes
-
-## Licence
-
-Ce projet est sous licence MIT. N'hésitez pas à le personnaliser selon vos besoins !
+- SVGL.app pour les icônes
