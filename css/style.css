@@ -127,7 +127,7 @@ img {
 
 /* Hero */
 .hero {
-  padding: 300px 0 80px;
+  padding: 305px 0 80px;
   background-image: url(https://images.unsplash.com/photo-1548092372-0d1bd40894a3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-size: cover;
   background-position: center;
@@ -157,6 +157,10 @@ img {
   position: relative;
   z-index: 2;
   min-height: 60vh;
+}
+
+.hero-content {
+  margin-top: -90px;
 }
 
 .hero-content h1 {
