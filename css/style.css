@@ -127,7 +127,7 @@ img {
 
 /* Hero */
 .hero {
-  padding: 120px 0 80px;
+  padding: 300px 0 80px;
   background-image: url(https://images.unsplash.com/photo-1548092372-0d1bd40894a3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-size: cover;
   background-position: center;
@@ -143,17 +143,20 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Noir à 50% d'opacité */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
 .hero .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 40px;
   position: relative;
   z-index: 2;
+  min-height: 60vh;
 }
 
 .hero-content h1 {
@@ -181,6 +184,14 @@ img {
   align-items: center;
 }
 
+.about .container {
+  direction: rtl;
+}
+
+.about .container > * {
+  direction: ltr;
+}
+
 .about-image img {
   border-radius: 10px;
   box-shadow: var(--shadow);
@@ -189,12 +200,12 @@ img {
 .about-content h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: var(--wisteria);
+  color: var(--indigo);
 }
 
 .about-content p {
   margin-bottom: 30px;
-  color: var(--wisteria);
+  color: var(--indigo);
 }
 
 .skills h3 {
