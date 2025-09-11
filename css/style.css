@@ -461,10 +461,95 @@ img {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
+/* Styles pour la section Compétences */
+.skills-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #25112c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.skills-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.skills-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skill-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.skill-tag:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.skill-tag svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  color: #ffffff;
+}
+
+.skill-tag a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Section Expérience */
 .experience {
   padding: 80px 0;
-  background: linear-gradient(135deg, rgba(205, 156, 236, 0.1) 0%, rgba(88, 0, 146, 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(205, 156, 236, 0.1) 0%,
+    rgba(88, 0, 146, 0.1) 100%
+  );
 }
 
 .experience h2 {
@@ -505,7 +590,7 @@ img {
 }
 
 .experience-content h3::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -527,7 +612,7 @@ img {
 }
 
 .timeline-item::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -6px;
   top: 0;
@@ -566,11 +651,11 @@ img {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  
+
   .experience-item {
     padding: 20px;
   }
-  
+
   .experience h2 {
     font-size: 2rem;
   }
