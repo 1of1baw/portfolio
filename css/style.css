@@ -170,6 +170,29 @@ img {
   color: var(--wisteria);
 }
 
+/* Effet machine à écrire */
+#hero-typing {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0; /* pas de barre/caret visible */
+  display: inline-block; /* pour que le caret soit à la fin du texte */
+}
+
+@keyframes caretBlink {
+  0%,
+  49% {
+    border-color: var(--wisteria);
+  }
+  50%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+.typing-active {
+  animation: none; /* aucune animation de curseur */
+}
+
 .hero-content p {
   font-size: 1.2rem;
   color: var(--wisteria);
@@ -577,9 +600,9 @@ img {
 
 .experience-timeline {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 1000px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 90px;
+  max-width: 4500px;
   margin: 0 auto;
 }
 
