@@ -1,23 +1,38 @@
 // Menu mobile
-const hamburger = document.createElement("div");
-hamburger.className = "hamburger";
-hamburger.innerHTML = "☰";
-document.querySelector(".header .container").appendChild(hamburger);
-
+const hamburger = document.querySelector(".hamburger");
 const nav = document.querySelector(".nav");
-hamburger.addEventListener("click", () => {
-  nav.classList.toggle("active");
-  hamburger.textContent = nav.classList.contains("active") ? "✕" : "☰";
-});
 
-// Fermer le menu au clic sur un lien
-const navLinks = document.querySelectorAll(".nav a");
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
-    hamburger.textContent = "☰";
+if (hamburger && nav) {
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("active");
+    hamburger.classList.toggle("active");
   });
-});
+
+  // Fermer le menu au clic sur un lien
+  const navLinks = document.querySelectorAll(".nav a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("active");
+      hamburger.classList.remove("active");
+    });
+  });
+
+  // Fermer le menu au clic en dehors
+  document.addEventListener("click", (e) => {
+    if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+      nav.classList.remove("active");
+      hamburger.classList.remove("active");
+    }
+  });
+
+  // Fermer le menu avec la touche Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      nav.classList.remove("active");
+      hamburger.classList.remove("active");
+    }
+  });
+}
 
 // Changement d'actif dans la navigation au scroll
 const sections = document.querySelectorAll("section");
