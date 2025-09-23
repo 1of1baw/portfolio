@@ -112,33 +112,6 @@ if (contactForm) {
   });
 }
 
-// Basculement de langue (exemple basique)
-const langToggle = document.querySelector(".lang-toggle");
-if (langToggle) {
-  langToggle.addEventListener("click", (e) => {
-    e.preventDefault();
-    // Ici, vous pouvez ajouter la logique de changement de langue
-    console.log("Changement de langue");
-    // Par exemple, rediriger vers la version anglaise :
-    // window.location.href = '/en';
-  });
-}
-
-// Chargement fluide des images
-const images = document.querySelectorAll("img[data-src]");
-const imageObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const img = entry.target;
-      img.src = img.dataset.src;
-      img.removeAttribute("data-src");
-      observer.unobserve(img);
-    }
-  });
-});
-
-images.forEach((img) => imageObserver.observe(img));
-
 // Effet machine à écrire sur le titre de la section héro
 document.addEventListener("DOMContentLoaded", () => {
   const titleElement = document.getElementById("hero-typing");
@@ -207,4 +180,98 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   scrambleTick();
+});
+
+// Chargement des flux RSS pour la veille
+document.addEventListener("DOMContentLoaded", () => {
+  const rssContainer = document.getElementById("rss-container");
+  if (!rssContainer) return;
+
+  // Configuration des flux RSS - REMPLACEZ par vos vrais flux
+  const rssFeeds = [
+    // Exemples de flux RSS technologiques populaires
+    "https://feeds.feedburner.com/oreilly/radar", // O'Reilly Radar
+    "https://www.smashingmagazine.com/feed/", // Smashing Magazine
+    "https://css-tricks.com/feed/", // CSS-Tricks
+    "https://feeds.feedburner.com/venturebeat/SZYF", // VentureBeat
+    "https://feeds.feedburner.com/TechCrunch/", // TechCrunch
+    // Ajoutez vos flux Google Alerts ici :
+    // "https://www.google.com/alerts/feeds/VOTRE_ID_1/VOTRE_ID_2"
+  ];
+
+  // Fonction pour charger un flux RSS via RSS2JSON
+  async function loadRSSFeed(feedUrl) {
+    try {
+      const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
+        feedUrl
+      )}`;
+      const response = await fetch(proxyUrl);
+      const data = await response.json();
+
+      if (data.status === "ok") {
+        return data.items.slice(0, 2); // Limiter à 2 articles par flux
+      }
+    } catch (error) {
+      console.error("Erreur lors du chargement du flux RSS:", error);
+    }
+    return [];
+  }
+
+  // Fonction pour afficher les articles RSS
+  function displayRSSArticles(articles) {
+    if (articles.length === 0) {
+      rssContainer.innerHTML = `
+        <div class="rss-loading">
+          <p>⚠️ Aucun flux RSS configuré ou erreur de chargement.</p>
+          <p><small>Vérifiez les URLs dans le fichier main.js</small></p>
+        </div>
+      `;
+      return;
+    }
+
+    const articlesHTML = articles
+      .map(
+        (article) => `
+      <div class="rss-item">
+        <div class="rss-meta">
+          <span class="rss-date">${new Date(article.pubDate).toLocaleDateString(
+            "fr-FR"
+          )}</span>
+          <span class="rss-source">${article.author || "RSS Feed"}</span>
+        </div>
+        <h4><a href="${article.link}" target="_blank" rel="noopener">${
+          article.title
+        }</a></h4>
+        <p>${
+          article.description
+            ? article.description.replace(/<[^>]*>/g, "").substring(0, 150) +
+              "..."
+            : ""
+        }</p>
+      </div>
+    `
+      )
+      .join("");
+
+    rssContainer.innerHTML = articlesHTML;
+  }
+
+  // Charger tous les flux RSS
+  async function loadAllRSSFeeds() {
+    const allArticles = [];
+
+    for (const feedUrl of rssFeeds) {
+      const articles = await loadRSSFeed(feedUrl);
+      allArticles.push(...articles);
+    }
+
+    // Trier par date (plus récent en premier)
+    allArticles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+    // Afficher les 6 articles les plus récents
+    displayRSSArticles(allArticles.slice(0, 6));
+  }
+
+  // Démarrer le chargement
+  loadAllRSSFeeds();
 });
